@@ -1089,6 +1089,7 @@ class UNetModel_newpreview(nn.Module):
 
         h = x.type(self.dtype)
         c = h[:,:-1,...]
+        result = self.highway_forward(c)
         if result is None:
             return None, None
             anch, cal = result
