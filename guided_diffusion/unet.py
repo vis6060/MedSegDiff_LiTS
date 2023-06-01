@@ -1064,7 +1064,7 @@ class UNetModel_newpreview(nn.Module):
         return cu * hu * h
     
     def highway_forward(self,x, hs = None):
-        return self.hwm(x,hs = None)
+        return self.hwm(x,hs = None, unet=None)
 
 
     def forward(self, x, timesteps, y=None):
