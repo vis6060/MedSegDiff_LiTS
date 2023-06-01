@@ -1089,7 +1089,11 @@ class UNetModel_newpreview(nn.Module):
 
         h = x.type(self.dtype)
         c = h[:,:-1,...]
-        anch, cal = self.highway_forward(c)
+        if result is None:
+            return None, None
+            anch, cal = result
+        
+     #   anch, cal = self.highway_forward(c)
         for ind, module in enumerate(self.input_blocks):
             if len(emb.size()) > 2:
                 emb = emb.squeeze()
