@@ -152,7 +152,7 @@ def main():
             sample_fn = (
                 diffusion.p_sample_loop_known if not args.use_ddim else diffusion.ddim_sample_loop_known
             )
-            sample, x_noisy, org, cal, cal_out = sample_fn(
+            sample, x_noisy, org, cal = sample_fn(
                 model,
                 (args.batch_size, 3, args.image_size, args.image_size), img,
                 step = args.diffusion_steps,
