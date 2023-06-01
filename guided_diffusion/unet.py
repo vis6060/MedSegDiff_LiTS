@@ -1065,7 +1065,7 @@ class UNetModel_newpreview(nn.Module):
     
     def highway_forward(self,x, hs = None):
     #    return self.hwm(x,hs = None)
-
+        return None
 
     def forward(self, x, timesteps, y=None):
         """
