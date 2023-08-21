@@ -121,7 +121,7 @@ Input to model is genetic characteristics of a particular race or people from a 
 ***Impact***: Billions of people in developing and under-developed countries can benefit from the advance knowledge of treatment plans in developed countries. 
 
 # Literature survey
-Please see the literature_survey.xls file.
+Please see the Deep Learning Journal Articles Survey.xlsx file.
 
 # Open-source datasets
 Here are the open source datasets or websites that host a library of cancer datasets that I came across:
