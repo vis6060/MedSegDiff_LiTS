@@ -127,8 +127,11 @@ Please see the literature_survey.xls file.
 Here are the open source datasets or websites that host a library of cancer datasets that I came across:
 
   a)	Chest x-rays:
+  
     a.	CheExpert dataset (Stanford AIMI - https://stanfordmlgroup.github.io/competitions/chexpert/)
+    
     b.	https://physionet.org/
+    
     c.	MIMIC CXR dataset (https://www.citiprogram.org/members/index.cfm?pageID=122&intStageID=106240#view)
     
   b)	MR:
