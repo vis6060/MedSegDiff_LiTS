@@ -180,5 +180,192 @@ Below is an example of patient#16 3D CT image of the three views – A/P; S/I an
 Even though the original code was tested on 3D MR images, it also works for 3D CT images.
 
 Fig 1: Patient#16: Training 3D CT image
+![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/a479d11c-2d7a-4565-8efc-ccdc7db27c77)
 
+Fig 2: Patient#16 LiTS Testing dataset 3D CT Segmented image (Reference)
+![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/0eb67b43-9edb-4cef-862b-19f352848334)
 
+Fig3: Patient#16:Model Output Segmented image (Actual)
+![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/0ebd23b4-b780-4ac1-bb83-22a03279fb78)
+
+***It can be seen that the model output segmented mask does not match up with the desired segmented mask.*** This is possibly due to limited training data sample size in the LiTS dataset.  Based upon datasets used in the “MedSegDiff-V2: Diffusion based Medical Image Segmentation with Transformer” 1200 to 8046 images. 
+
+# Inferencing using Google Cloud – Vertex AI and Storage Buckets
+
+The following is my experience of using the Jupyter Lab notebook and Jupyter terminal in Vertex AI with the PyTorch code:
+
+a) Vertex AI User documentation is very developer focused as compared to for a novice. Each documentation page has links to many other pages, so it is difficult to keep track of the relevant information needed to solve my particular issue at hand. The user documentation needs more tutorials showcasing how to execute a particular workflow of steps. The amount of information on each user documentation is overwhelming. After reading many of the sections, I was still unsure what series of steps I need to take to execute on my particular use case.
+
+b) Troubleshooting help: In some cases, there are several blogs of people having same error, but few have replied a resolution. When I tried those resolution steps it did not work for me.
+
+b) Folder Upload to Storage Bucket: On selecting a folder from local computer it would not upload to Google cloud and offers no error message as to why it did not upload.
+
+c) GPU Selection: It took an hour or so, just to find a region which has a machine with Python and CUDA along with a GPU.  I had to go one-by-one each server region to find the one that would spin-up a virtual machine with the GPU. Some visual guidance in the UI as to which region are only available with this setting would have made this process easier.  Finally, it was the West3B region that worked for me.
+
+d) Billing is not real-time. after 2hr of shutting down my instance found out there was more charge i had accrued.  Also, GPU usage can be expensive, I had to pay $8 for about 8 hours of Vertex AI machine time of the cheapest GPU available, I can see the cost scaling if I have to troubleshoot for several hours/days and perform inference on 100s of 3D CT images.  Lastly, after I subscribed for the 90-day free credits, I found out that free credits do not allow use of GPUs.  I later found that this was written in the description of free credits, which I initially did not see.
+
+e) File Upload: When i upload into the instance Jupyter lab notebook, it automatically compresses the size of the file from 500MB to 240MB, not sure if the contents of the compressed file are same as original file. But the same file when uploaded into Google cloud bucket the size stays the same.
+
+f) File read error: Vertex AI was unable to read the NII file extension CT testing images. Even after installing the NiBabel python library. It is an issue with Google Cloud Vertex AI as the exact same code and testing image was read on my local computer.
+
+g) Bard and ChatGPT3.5 both gave many suggestions on the possible root cause to fix the error of unable to read NII files.  I followed some of the suggestions, but still could not fix the error.  They also gave code that I could insert into my files, but this code did not solve the error. 
+
+# Challenges
+
+a)	The single GeForce RTX 4090 to train 100 3D CT images took 8 days * 24 hours.  However, for testing I was able to inference on only two images at a time, more than 2 images I use to get out of memory error message.
+
+b)	Bard and ChatGPT suggestions were of minimal help to troubleshoot error messages.
+
+c)	Google Vertex AI Jupyter terminal was unable to read 3D CT Images in the NII file formats.
+
+d)	Open-source AI codes for the desired application are limited. There are only a few journal papers that have made their codebase public.  Further, for these free codebases the authors have posted a working code, but there are several implementation issues when others try to execute the same code with a different dataset on their computer.  
+
+# Summary/Conclusion
+
+Several commercially viable use cases were introduced here.  However, it was a challenge to find open-source datasets and the corresponding open-source codebases that can be utilized to create a prototype AI model, which can be used for initial customer feedback. For example, an open-source dataset for CT images cancer liver segmentation was used on an open-source codebase, initially developed by OpenAI, which showed state-of-the-art results for MR images. But for the CT images given the limited dataset of approximately 120 images the training model was poor.  
+
+# Future Direction
+
+a)	Need an easier way to string the various public codebases, each with a different application, together, so a commercially viable use case can be introduced to the market.
+
+b)	Various open-source codes are based on the few big open-source datasets mainly of X-ray. Big open-source datasets of CT and MR imaging are lacking.  Hence, large healthcare institutions with the appropriate patient consent with a large historical dataset are well poised to develop AI models.  Sometimes individual hospitals datasets may not have the needed equal number of datapoints patient diversity, thus federated mechanisms of pooling datasets across healthcare institution are required.
+
+c)	Given that LiTS dataset is for only 110 3D CT images. We need to introduce further data augmentation techniques or insert synthetic images which represents the real patients into the training dataset.  But these augmentation techniques and synthetic images need to represent real patient cases.
+
+d)	Industry needs to figure out a way to reduce the barriers to access to datasets by making them cheaper or open-source so as to reduce the cost of development of these AI models as the revenue from these products may be too little compared to the cost.
+
+# References
+
+https://github.com/WuJunde/MedSegDiff
+
+https://github.com/openai/improved-diffusion
+
+# IDEO Framework
+## IDEO Theory of Change for Use Case A:
+
+The IDEO theory of change is used to brainstorm the changes that will be needed to achieve the desired outcomes.
+(https://www.designkit.org/methods/explore-your-theory-of-change.html)
+
+### Change #1: 
+***From***: no concept of personalized prognosis of cancer even possible in developing countries. Majority visit a specialist or cancer hospital when they have severe symptoms.
+
+***To***: spreading awareness of availability of prognosis tools.
+
+### Change#2: 
+***From***: lack of any prognosis tools both in developed and developing countries. 
+
+***To***: The generative AI tools empower the third-tier district/village/small-town level non-oncologist doctors or oncologist to perform prognosis.
+
+### Change#3: 
+***From***: after the cancerous cells have been eliminated, still there is uncertainty on whether cancer will appear at the same site or at a different site in the body. Both in developed and developing countries.
+
+***To***: a change of follow-up visits schedule from every 6 to 9 months, to skipping some visits to eliminating all follow-up visits, as prognosis of possibility of recurrent cancer can be done at third-tier hospitals. 
+
+### Change#4: 
+***From***: patients having to see a physician every 6 to 9 months, even if they have been cancer-free for several years. 
+
+***To***: patients use a wellness app to determine if their symptoms show a relapse of cancer.
+
+### Change#5: 
+
+***From***: oncologist in developing countries have a heavy workload, and don’t have the time to stay up to date on latest advances/research.
+
+***To***: oncologist relying on the Clinical Decision Support tool to provide them with just the relevant information necessary for the diagnosis of the particular patient using the Explainable AI methodology.
+
+## IDEO Ecosystem Mapping: 
+
+Patients as the user: The behavior or outcome you want to help your user achieve: A behavior change of weekly logging-in and using the wellness app.  Have confidence in the results of the app, which is going to be a simple message that is shown – “Please report your symptoms to your doctor.”  The patient needs to be trained on how to use the app.  The patient needs to be educated with the possibilities of cancer occurrence.
+
+Relevant Community Personas around the user/patient: Family, Relatives, Cancer Support Groups, Healthcare Delivery Organizations.  Each of these groups would be a fan of the Clinical Decision Support app and will support he user.  Education and Awareness of the Clinical Decision Support app would be required among these personas.
+
+Services user needs:  A person to educate the user on the app. Low degree of challenge as their family members or healthcare delivery organization can provide the education.
+
+Institutions – rights and freedom of the user: timely access to healthcare is a right that the patient ought to get. But, in several developing countries access to healthcare requires an upfront payment, and thus is a barrier. Thus, the app when it gives the message to consult a healthcare professional based upon their symptoms, this may panic the individual if they are unable to seek timely help. 
+
+# Google’s Responsible AI Framework
+
+Referenced from here: https://ai.google/responsibility/responsible-ai-practices/
+
+## Is AI the right solution for this customer problem?
+
+For the Cancer CDS tool, AI probably better to solve user problem in a unique way due to several reasons:
+
+***a)	The core experience requires recommending different content to different users***: in this case, depending on the different patient’s health conditions different treatment plan needs to be recommended.
+
+***b)	The core experience requires prediction of future events***: clinical decision support model needs to predict future spread of cancer in body
+
+***c)	Personalization will improve the user experience***: physician user experience is improved when the local treatment guidelines, i.e. personalized to that healthcare institution, is offered as explanation for recommendation along with the national consensus treatment guidelines.
+
+***d)	User experience requires natural language interactions***: Clinical Decision Support model requires NLP abilities for the physician and radiologist report findings. 
+
+***e)	The most valuable part of the core experience is its predictability in-context***: prediction needs to take into account the particular condition of the patient.
+
+***f)	The cost of errors is low***: as this is only a clinical decision support tool meant to provide guidance to the medical professional.
+
+***g)	Augmentation is required***: patient’s history can be long and could take a lot of time to evaluate it, thus, the AI model reviewing the entire history and offering suggestion is preferred. The stakes of getting the diagnosis/prognosis wrong is high from a patient safety and resources standpoint.
+
+## Reward function: 
+
+***AI model will be optimized for recall, i.e. fewer false negatives offers the most user benefit***, because if a patient will develop cancer symptoms and if the model says that the person will not have cancer, then that ***puts the patient at risk, it decreases the confidence of the medical professional to trust the clinical decision support model***. Sacrificing precision in favor of recall means that there will be several instances when the model will incorrectly say the person will develop cancer in reality they will not, this would increase the workload of the clinician and if this continues then over a period of time, ***they may use less of the clinical decision support model.*** 
+
+## Success metrics: 
+
+A)	Ideal scenario is that the model is being used by clinician on 70% of their patients. ***If it is being used on less than 70% of the patients in a month***, then alert the design team to conduct a user research interview with 5 why’s or fishbone analysis to determine root cause. 
+
+B)	Ideal scenario is that model offers less than 10% false negatives, ***if the in-model instant user feedback shows that more than 10% patient cases the model said patient doesn’t have cancer, but actually had cancer***, then alert the design team so they can conduct a root cause analysis.  
+
+These metrics will change after 10,000 patients have been processed and the model has been revised from this feedback. When the model matures, the expectation is that metric A is revised where it is used for 90% of patients and metric B is revised where the model offers less than 2% false negatives.
+
+## Mental models:
+
+### Section1: User groups:
+a)	Oncologist in developed countries
+1.	Primary goal: Serve a large workload of cancer patients and stay up to date on latest cancer drugs and treatment pathways.
+2.	Step-by-step process that users currently use to accomplish the task that AI will accomplish: Currently, there is no tool that will alert the oncologist whether cancer has spread to parts of body for the various ethnicities and genetics.
+i.	They manually review the entire medical history of patient, including numerous pages of radiologist notes and past treatment history. 
+ii.	To determine if cancer has spread or might spread to other parts of body, they perform CT or MRI scans and blood tests at every 9-month patient visit.
+
+b)	Oncologist in under-developed countries
+1.	Primary goal: offer a low-cost option to patients by being knowledgeable enough to serve cancer patients, as access to oncologist is difficult. Also, patients access to generic cancer drugs is limited and there is insufficient information the efficacy of any given drug for their ethnic population. 
+2.	Step-by-step process that users currently use to accomplish the task that AI will accomplish: Currently, there is no tool that will alert the oncologist whether cancer has spread to parts of body for the various genetics.
+i.	They manually review the entire medical history of patient, including numerous pages of radiologist notes and past treatment history. 
+ii.	No follow-up visits from patients due to resource challenges. Thus, patients are treated only once they once again show severe symptoms.
+iii.	They rely on memory of past similar patients cancer cases, to prescribe a treatment plan for the current patient case.
+
+c)	Nurse practician or primary care general physician in developing and under-developed countries: 
+1.	Primary goal: offer a low-cost option to patients by being knowledgeable enough to serve cancer patients, as access to oncologist is difficult. Also, patients access to generic cancer drugs is limited and there is insufficient information the efficacy of any given drug for their ethnic population. 
+2.	Step-by-step process that users currently use to accomplish the task that AI will accomplish: Currently, there is no tool that will alert the oncologist whether cancer has spread to parts of body for the various genetics.
+i.	They manually review the entire medical history of patient, including numerous pages of radiologist notes and past treatment history. 
+ii.	No follow-up visits from patients due to resource challenges. Thus, patients are treated only once they once again show severe symptoms.
+iii.	Since, they are not trained oncologist and lack recent, they mostly prescribe the same treatment pathway to all patients, irrespective of patient condition nuances – especially due to limited availability of expensive blood test assay; diagnostic imaging technology; forced to prescribe non-cancer drugs due to limited availability of any cancer drugs.
+Section2: Potential places where user’s mental model could break when encountering realities of AI functionality: 
+i.	Some patient’s medical history might be comprehensive and over many years and for some patients medical history might be short as past records are unavailable, but the AI model output could be same for a patient from these groups, thereby confusing the medical professional. There would be confusion as to which medical history parameter makes the difference.
+ii.	The model output may be the same for a long radiologist report or from the summary taken from the report. Thereby confusing the user if the AI model is taking into account the nuances of the entire radiologist report findings.
+Section3:  what cause and effect relationships does the user need to understand —even in simplified terms or by analogy — to successfully use the AI product?
+At different time points of the follow-up visits, the diagnostic images can be of different organs coverage and could be acquired with different parameters. The AI model will assume that all the images are consistently acquired with the same parameters. 
+Section 4: how might anthropomorphizing the product alter the mental model?
+Model can be made more human-like, when the output of the model is accompanied by an explanation of all the model inputs that were considered and not considered.  A medical professional evaluating the relevance of a patient’s symptoms and medical history would perform similar explanations of what is relevant and irrelevant t the situation at hand.
+Section 5:  The biggest risks to users developing good mental models for our product are:
+Since the model can offer an explanation on which of the medical history parameters are relevant and not, there may be an inclination to order more lab tests and more diagnostic exams during follow-up visits, just to check the boxes of the various types of data that needs to be entered to the model. Practices would do this to reduce their malpractice liability as the AI model explanations can be used as justification for their actions.
+Section 6: Onboarding: The Clinical Decision Support product will provide user guidance on whether a person based on their medical history has cancer, it will segment the organ(s) that are cancerous, it will provide prediction on the body parts that the cancer can spread. Benefits to user are time savings, a “second opinion” tool and delegation of follow-up cancer monitoring to non-oncologist medical professionals. Its primary limitations are that initially, there is higher likelihood that model output is incorrect. i.e. model says the person has a particular grade of cancer, when that is incorrect or it might see something cancerous in diagnostic images, when that could be just an artifact.  Hence, it requires your help to flag and provide an explanation when the model output is correct and incorrect. This feedback will be reviewed by human reviewers and used to improve the model performance.    
+In boarding messaging: provide a short video demo of how to upload the various pieces of the medical history into the model and the output of model.  There will be no real-time updates to the model, all the feedback will be accumulated and then in consultation with the user the model will be revised.
+Section 7: Feedback + Control
+Feedback Mission: To collect whether the model accurately able to provide diagnosis and prognosis output.  Explicit feedback of thumbs up/down will directly be used for model tuning, rest of the qualitative feedback will be used by design team to better understand model performance in real-world across diverse patients/users.
+Degree of User Control over Model: User has full control over the system, as it is a clinical decision support tool and the stakes are high as it deals with a disease that can be fatal, input patient medical history data will be automatically loaded into the inferencing model, but it is up to the medical professional to heed the output of the model or do it the status quo way.  This way as the user builds trust with the model, they will heed model’s output more often for more patients.
+Explicit Feedback: survey questions, thumbs up/down; open text field are going to be in-context for each patient visit.
+User Motivation: For the initial deployments of the model at customer sites, offer the site 2X time it takes for the different user personas to provide feedback at the hourly rate.  Because, initially they are doing the model a favor by helping it improve. For example, if takes 15minutes/patient to provide feedback and the blended hourly rate for all the personas that need to complete the survey is $100, then pay the clinic $50/patient survey complete.  After a large number say, 10,000 patients of model tuning and success metrics satisfied, then get only thumbs up/down feedback, and rely on the intrinsic social motivation for user to provide this feedback.
+Opt-out: Allow users to opt-out from sharing their implicit behavior of their users with the company in the terms of service.
+Section 8: Explainability + Trust
+This Clinical Decision product has high user impact as chance of error can be costly and fatal for a patient.  Hence in the 2x2 of User Impact and AI Confidence, this solution is in the red circle region. In this region, to develop user trust need to provide explanations both overall model explanation and general and specific output.  
+The overall model explanation will describe the training dataset and what output to expect and not to expect as this is intended for technical audience. Also, aggregate visualization of the training dataset will be shown, for example, a pie chart that shows the different types of cancer the model was trained on.  For general output, it will not provide a percentage of AI confidence level, instead it will provide an explanation of what it means for a categorical label to be high confidence, medium confidence, or low confidence.  For specific output, it will provide top 3 recommendations along with the same high, medium, low confidence labels.  For a future release, AI model will say which specific aspects of the medical record were similar to data in the training dataset.  It cannot offer example-based justification from the dataset, due to possible plagiarism of the dataset and to maintain the privacy of the patient dataset.
+
+ ![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/eec3c395-efca-40d7-8c95-dc05eb47cf35)
+
+Section 9: Errors
+The following errors are possible:
+a.	Context error: incomplete coverage of the mapping of current cancerous area and incorrect mapping of the organ for the particular patient. 
+b.	Context error: prediction of a cancerous region can be completely wrong or partially wrong for the particular patient.
+c.	Context error: if one follow-up visits image is unavailable, but others are available, then user may not use the system, even though the system can work just fine with its prediction with the missing image, for the particular patient.
+d.	Fail State error: insufficient training data for the particular case at hand. Hence, low confidence recommendation produced.
+e.	Background errors: system produces an incorrect output and the user, due to lack of time or poor judgment, is unable to discern the incorrect output.
+f.	Input errors: unexpected input: different formats of patient records. Some missing data points.  User will think system will auto-correct or fill-in the gaps when it provides its output.
