@@ -319,11 +319,16 @@ These metrics will change after 10,000 patients have been processed and the mode
 ## Mental models:
 
 ### Section1: User groups:
-a)	Oncologist in developed countries
-1.	Primary goal: Serve a large workload of cancer patients and stay up to date on latest cancer drugs and treatment pathways.
-2.	Step-by-step process that users currently use to accomplish the task that AI will accomplish: Currently, there is no tool that will alert the oncologist whether cancer has spread to parts of body for the various ethnicities and genetics.
-i.	They manually review the entire medical history of patient, including numerous pages of radiologist notes and past treatment history. 
-ii.	To determine if cancer has spread or might spread to other parts of body, they perform CT or MRI scans and blood tests at every 9-month patient visit.
+
+  a)	Oncologist in developed countries
+  
+    -	Primary goal: Serve a large workload of cancer patients and stay up to date on latest cancer drugs and treatment pathways.
+    
+    -	Step-by-step process that users currently use to accomplish the task that AI will accomplish: Currently, there is no tool that will alert the oncologist whether cancer has spread to parts of body for the various ethnicities and genetics.
+    
+        -	They manually review the entire medical history of patient, including numerous pages of radiologist notes and past treatment history. 
+
+        -	To determine if cancer has spread or might spread to other parts of body, they perform CT or MRI scans and blood tests at every 9-month patient visit.
 
 b)	Oncologist in under-developed countries
 1.	Primary goal: offer a low-cost option to patients by being knowledgeable enough to serve cancer patients, as access to oncologist is difficult. Also, patients access to generic cancer drugs is limited and there is insufficient information the efficacy of any given drug for their ethnic population. 
