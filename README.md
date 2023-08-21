@@ -603,19 +603,19 @@ Note: In a developing country and under-developed country, the above holds true,
 
 Customers will be developed in the following phases:
 
-Phase A: Select Large Integrated Delivery Network (IDN) Providers in the US.  The model will be validated in each of these sites individually before full paid roll-out. Third party partnerships in-place for CDS tool integration. 
+***Phase A***: Select Large Integrated Delivery Network (IDN) Providers in the US.  The model will be validated in each of these sites individually before full paid roll-out. Third party partnerships in-place for CDS tool integration. 
 
-Phase B: Select Providers in Canada and Europe, in order of priority, UK, Germany, Italy, and France. The model will be validated in each of these sites individually before full paid roll-out.
+***Phase B***: Select Providers in Canada and Europe, in order of priority, UK, Germany, Italy, and France. The model will be validated in each of these sites individually before full paid roll-out.
 
-Phase C: Once the model matures, full paid roll-out in US and Europe customers. 
+***Phase C***: Once the model matures, full paid roll-out in US and Europe customers. 
 
-Phase D: Wellness app for select patients to validate model. Select insurance companies in the US for model validation.
+***Phase D***: Wellness app for select patients to validate model. Select insurance companies in the US for model validation.
 
-Phase E: Once the model matures, full paid roll-out for insurance companies in US. Free full roll-out for patients facing wellness app.
+***Phase E***: Once the model matures, full paid roll-out for insurance companies in US. Free full roll-out for patients facing wellness app.
 
-Phase F: Select large providers in five developing countries. Once the model matures, full paid roll-out in five developing countries.
+***Phase F***: Select large providers in five developing countries. Once the model matures, full paid roll-out in five developing countries.
 
-## Pricing:
+## Pricing
 
 US and Europe Providers pay $25,000 base fee per year + $200 per patient on which CDS tool used.
 
