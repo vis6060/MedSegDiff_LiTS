@@ -1,7 +1,6 @@
 # Author: Vishal Kampani
 
-**Table of Contents**
-![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/8b1db57e-495e-45ec-88f1-1a4f3fe7fc11)
+![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/4ab4c14c-1400-4a44-91e5-14ef2295d108)
 ![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/0a365925-79f3-43b5-82d8-c87f74c5b888)
 ![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/60ad9ae5-b46b-4027-a6d7-e06168524fa2)
 
