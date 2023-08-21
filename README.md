@@ -121,19 +121,23 @@ Input to model is genetic characteristics of a particular race or people from a 
 ***Impact***: Billions of people in developing and under-developed countries can benefit from the advance knowledge of treatment plans in developed countries. 
 
 # Literature survey
-Please see the literature_survey.xls file or appendix.
+Please see the literature_survey.xls file.
 
 # Open-source datasets
 Here are the open source datasets or websites that host a library of cancer datasets that I came across:
+
   a)	Chest x-rays:
     a.	CheExpert dataset (Stanford AIMI - https://stanfordmlgroup.github.io/competitions/chexpert/)
     b.	https://physionet.org/
     c.	MIMIC CXR dataset (https://www.citiprogram.org/members/index.cfm?pageID=122&intStageID=106240#view)
+    
   b)	MR:
     a.	BraTS dataset (https://ipp.cbica.upenn.edu/)
     b.	CT & MR dataset for 15 organs (https://amos22.grand-challenge.org/Instructions/)
+    
   c)	CT
     a.	Liver tumor segmentation (https://competitions.codalab.org/competitions/17094#learn_the_details)
+    
   d)	Websites that host library of many datasets:
     a.	https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=61080890
 
