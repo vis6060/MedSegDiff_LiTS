@@ -144,17 +144,26 @@ The codebase and methodology presented in the following paper was used: MedSegDi
 
 # MedSegDiff Code modifications
 The code from, https://github.com/WuJunde/MedSegDiff, was modified to fit the requirements of LiTS dataset and some other considerations as follows:
+
   a)	Since, a single GeForce RTX 4090 was available for training, the parallel training code was commented-out in the file – train_util.py.
+  
   b)	Since, windows desktop was used, the gloo backend option was inserted in the file – dist_util.py.
+  
   c)	The parser in bratslaoader.py 3D data section of the code was updated to match the format of the input data folders name.
+  
   d)	The actual code is for one 3D MR image which when converted are 155 2D DICOM images.  However, the one 3D CT image of the LiTS dataset has 123 2D image. Thus, all the lines in bratsloader.py that dealt with 155 numeric calculations were changed to 123.
+  
   e)	The initial code for each patient they had four MRI series – T1; T1Flair; T2; post-contrast T1 weighted. Hence, the number of channels in bratsloader.py were set at five in original code.  In my case for the LiTs dataset there is only one CT image per patient, hence number of channels was set at two.
+  
   f)	The initial code has hard-coded the flag in the bratsloader.py data file between if command which has two files in training code and one file (as there is no segmentation file) in testing code.
 
 # Results
 The model was trained with 110 3D CT images of the LiTS dataset. It was trained for 100,000 steps using the following hyperparameters after pytorch environment activation:
+
   •	conda activate pytorch-gpu2-python-3-10
+  
   •	python scripts/segmentation_train.py --data_dir data/training --image_size 256 --num_channels 128 --class_cond False --num_res_blocks 2 --num_heads 1 --learn_sigma True --use_scale_shift_norm False --attention_resolutions 16 --diffusion_steps 1000 --noise_schedule linear --rescale_learned_sigmas False --rescale_timesteps False --lr 1e-4 --batch_size 8
+  
   •	python scripts/segmentation_sample.py --data_dir /data/testing --model_path results/savedmodel100000.pt --image_size 256 --num_channels 128 --class_cond False --num_res_blocks 2 --num_heads 1 --learn_sigma True --use_scale_shift_norm False --attention_resolutions 16 --diffusion_steps 50 --noise_schedule linear --rescale_learned_sigmas False --rescale_timesteps False --num_ensemble 5  --dpm_solver True
 
 In the testing command, changes were made to hyperparameters of diffusion steps by changing it from 50 to 10,000. Further in a different scenario, the number of ensembles were changed from 5 to 20.  However, no difference was observed in the output.
