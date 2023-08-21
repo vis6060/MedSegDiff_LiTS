@@ -326,51 +326,389 @@ These metrics will change after 10,000 patients have been processed and the mode
     
     Step-by-step process that users currently use to accomplish the task that AI will accomplish: Currently, there is no tool that will alert the oncologist whether cancer has spread to parts of body for the various ethnicities and genetics.
     
-      i) They manually review the entire medical history of patient, including numerous pages of radiologist notes and past treatment history. 
+      i. They manually review the entire medical history of patient, including numerous pages of radiologist notes and past treatment history. 
 
-      ii)	To determine if cancer has spread or might spread to other parts of body, they perform CT or MRI scans and blood tests at every 9-month patient visit.
+      ii.	To determine if cancer has spread or might spread to other parts of body, they perform CT or MRI scans and blood tests at every 9-month patient visit.
 
 b)	Oncologist in under-developed countries
-1.	Primary goal: offer a low-cost option to patients by being knowledgeable enough to serve cancer patients, as access to oncologist is difficult. Also, patients access to generic cancer drugs is limited and there is insufficient information the efficacy of any given drug for their ethnic population. 
-2.	Step-by-step process that users currently use to accomplish the task that AI will accomplish: Currently, there is no tool that will alert the oncologist whether cancer has spread to parts of body for the various genetics.
-i.	They manually review the entire medical history of patient, including numerous pages of radiologist notes and past treatment history. 
-ii.	No follow-up visits from patients due to resource challenges. Thus, patients are treated only once they once again show severe symptoms.
-iii.	They rely on memory of past similar patients cancer cases, to prescribe a treatment plan for the current patient case.
 
-c)	Nurse practician or primary care general physician in developing and under-developed countries: 
-1.	Primary goal: offer a low-cost option to patients by being knowledgeable enough to serve cancer patients, as access to oncologist is difficult. Also, patients access to generic cancer drugs is limited and there is insufficient information the efficacy of any given drug for their ethnic population. 
-2.	Step-by-step process that users currently use to accomplish the task that AI will accomplish: Currently, there is no tool that will alert the oncologist whether cancer has spread to parts of body for the various genetics.
-i.	They manually review the entire medical history of patient, including numerous pages of radiologist notes and past treatment history. 
-ii.	No follow-up visits from patients due to resource challenges. Thus, patients are treated only once they once again show severe symptoms.
-iii.	Since, they are not trained oncologist and lack recent, they mostly prescribe the same treatment pathway to all patients, irrespective of patient condition nuances – especially due to limited availability of expensive blood test assay; diagnostic imaging technology; forced to prescribe non-cancer drugs due to limited availability of any cancer drugs.
-Section2: Potential places where user’s mental model could break when encountering realities of AI functionality: 
+  	Primary goal: offer a low-cost option to patients by being knowledgeable enough to serve cancer patients, as access to oncologist is difficult. Also, patients access to generic cancer drugs is limited and there is insufficient information the efficacy of any given drug for their ethnic population.
+   
+	Step-by-step process that users currently use to accomplish the task that AI will accomplish: Currently, there is no tool that will alert the oncologist whether cancer has spread to parts of body for the various genetics.
+ 
+    i.	They manually review the entire medical history of patient, including numerous pages of radiologist notes and past treatment history. 
+    ii.	No follow-up visits from patients due to resource challenges. Thus, patients are treated only once they once again show severe symptoms.
+    iii.	They rely on memory of past similar patients cancer cases, to prescribe a treatment plan for the current patient case.
+
+c)	Nurse practician or primary care general physician in developing and under-developed countries
+
+	Primary goal: offer a low-cost option to patients by being knowledgeable enough to serve cancer patients, as access to oncologist is difficult. Also, patients access to generic cancer drugs is limited and there is insufficient information the efficacy of any given drug for their ethnic population.
+   
+	Step-by-step process that users currently use to accomplish the task that AI will accomplish: Currently, there is no tool that will alert the oncologist whether cancer has spread to parts of body for the various genetics.
+
+    i.	They manually review the entire medical history of patient, including numerous pages of radiologist notes and past treatment history. 
+    ii.	No follow-up visits from patients due to resource challenges. Thus, patients are treated only once they once again show severe symptoms.
+    iii.	Since, they are not trained oncologist and lack recent, they mostly prescribe the same treatment pathway to all patients, irrespective of patient condition nuances – especially due to limited availability of expensive blood test assay; diagnostic imaging technology; forced to prescribe non-cancer drugs due to limited availability of any cancer drugs.
+
+### Section2: Potential places where user’s mental model could break when encountering realities of AI functionality: 
+
 i.	Some patient’s medical history might be comprehensive and over many years and for some patients medical history might be short as past records are unavailable, but the AI model output could be same for a patient from these groups, thereby confusing the medical professional. There would be confusion as to which medical history parameter makes the difference.
+
 ii.	The model output may be the same for a long radiologist report or from the summary taken from the report. Thereby confusing the user if the AI model is taking into account the nuances of the entire radiologist report findings.
-Section3:  what cause and effect relationships does the user need to understand —even in simplified terms or by analogy — to successfully use the AI product?
+
+### Section3:  what cause and effect relationships does the user need to understand —even in simplified terms or by analogy — to successfully use the AI product?
+
 At different time points of the follow-up visits, the diagnostic images can be of different organs coverage and could be acquired with different parameters. The AI model will assume that all the images are consistently acquired with the same parameters. 
-Section 4: how might anthropomorphizing the product alter the mental model?
+
+### Section 4: how might anthropomorphizing the product alter the mental model?
+
 Model can be made more human-like, when the output of the model is accompanied by an explanation of all the model inputs that were considered and not considered.  A medical professional evaluating the relevance of a patient’s symptoms and medical history would perform similar explanations of what is relevant and irrelevant t the situation at hand.
-Section 5:  The biggest risks to users developing good mental models for our product are:
+
+### Section 5:  The biggest risks to users developing good mental models for our product are:
+
 Since the model can offer an explanation on which of the medical history parameters are relevant and not, there may be an inclination to order more lab tests and more diagnostic exams during follow-up visits, just to check the boxes of the various types of data that needs to be entered to the model. Practices would do this to reduce their malpractice liability as the AI model explanations can be used as justification for their actions.
-Section 6: Onboarding: The Clinical Decision Support product will provide user guidance on whether a person based on their medical history has cancer, it will segment the organ(s) that are cancerous, it will provide prediction on the body parts that the cancer can spread. Benefits to user are time savings, a “second opinion” tool and delegation of follow-up cancer monitoring to non-oncologist medical professionals. Its primary limitations are that initially, there is higher likelihood that model output is incorrect. i.e. model says the person has a particular grade of cancer, when that is incorrect or it might see something cancerous in diagnostic images, when that could be just an artifact.  Hence, it requires your help to flag and provide an explanation when the model output is correct and incorrect. This feedback will be reviewed by human reviewers and used to improve the model performance.    
-In boarding messaging: provide a short video demo of how to upload the various pieces of the medical history into the model and the output of model.  There will be no real-time updates to the model, all the feedback will be accumulated and then in consultation with the user the model will be revised.
-Section 7: Feedback + Control
-Feedback Mission: To collect whether the model accurately able to provide diagnosis and prognosis output.  Explicit feedback of thumbs up/down will directly be used for model tuning, rest of the qualitative feedback will be used by design team to better understand model performance in real-world across diverse patients/users.
-Degree of User Control over Model: User has full control over the system, as it is a clinical decision support tool and the stakes are high as it deals with a disease that can be fatal, input patient medical history data will be automatically loaded into the inferencing model, but it is up to the medical professional to heed the output of the model or do it the status quo way.  This way as the user builds trust with the model, they will heed model’s output more often for more patients.
-Explicit Feedback: survey questions, thumbs up/down; open text field are going to be in-context for each patient visit.
-User Motivation: For the initial deployments of the model at customer sites, offer the site 2X time it takes for the different user personas to provide feedback at the hourly rate.  Because, initially they are doing the model a favor by helping it improve. For example, if takes 15minutes/patient to provide feedback and the blended hourly rate for all the personas that need to complete the survey is $100, then pay the clinic $50/patient survey complete.  After a large number say, 10,000 patients of model tuning and success metrics satisfied, then get only thumbs up/down feedback, and rely on the intrinsic social motivation for user to provide this feedback.
-Opt-out: Allow users to opt-out from sharing their implicit behavior of their users with the company in the terms of service.
-Section 8: Explainability + Trust
+
+### Section 6: Onboarding: 
+The Clinical Decision Support product will provide user guidance on whether a person based on their medical history has cancer, it will segment the organ(s) that are cancerous, it will provide prediction on the body parts that the cancer can spread. Benefits to user are time savings, a “second opinion” tool and delegation of follow-up cancer monitoring to non-oncologist medical professionals. Its primary limitations are that initially, there is higher likelihood that model output is incorrect. i.e. model says the person has a particular grade of cancer, when that is incorrect or it might see something cancerous in diagnostic images, when that could be just an artifact.  Hence, it requires your help to flag and provide an explanation when the model output is correct and incorrect. This feedback will be reviewed by human reviewers and used to improve the model performance.    
+
+***In boarding messaging***: provide a short video demo of how to upload the various pieces of the medical history into the model and the output of model.  There will be no real-time updates to the model, all the feedback will be accumulated and then in consultation with the user the model will be revised.
+
+### Section 7: Feedback + Control
+***Feedback Mission***: To collect whether the model accurately able to provide diagnosis and prognosis output.  Explicit feedback of thumbs up/down will directly be used for model tuning, rest of the qualitative feedback will be used by design team to better understand model performance in real-world across diverse patients/users.
+
+***Degree of User Control over Model***: User has full control over the system, as it is a clinical decision support tool and the stakes are high as it deals with a disease that can be fatal, input patient medical history data will be automatically loaded into the inferencing model, but it is up to the medical professional to heed the output of the model or do it the status quo way.  This way as the user builds trust with the model, they will heed model’s output more often for more patients.
+
+***Explicit Feedback***: survey questions, thumbs up/down; open text field are going to be in-context for each patient visit.
+
+***User Motivation***: For the initial deployments of the model at customer sites, offer the site 2X time it takes for the different user personas to provide feedback at the hourly rate.  Because, initially they are doing the model a favor by helping it improve. For example, if takes 15minutes/patient to provide feedback and the blended hourly rate for all the personas that need to complete the survey is $100, then pay the clinic $50/patient survey complete.  After a large number say, 10,000 patients of model tuning and success metrics satisfied, then get only thumbs up/down feedback, and rely on the intrinsic social motivation for user to provide this feedback.
+
+***Opt-out***: Allow users to opt-out from sharing their implicit behavior of their users with the company in the terms of service.
+
+### Section 8: Explainability + Trust
+
 This Clinical Decision product has high user impact as chance of error can be costly and fatal for a patient.  Hence in the 2x2 of User Impact and AI Confidence, this solution is in the red circle region. In this region, to develop user trust need to provide explanations both overall model explanation and general and specific output.  
+
 The overall model explanation will describe the training dataset and what output to expect and not to expect as this is intended for technical audience. Also, aggregate visualization of the training dataset will be shown, for example, a pie chart that shows the different types of cancer the model was trained on.  For general output, it will not provide a percentage of AI confidence level, instead it will provide an explanation of what it means for a categorical label to be high confidence, medium confidence, or low confidence.  For specific output, it will provide top 3 recommendations along with the same high, medium, low confidence labels.  For a future release, AI model will say which specific aspects of the medical record were similar to data in the training dataset.  It cannot offer example-based justification from the dataset, due to possible plagiarism of the dataset and to maintain the privacy of the patient dataset.
 
  ![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/eec3c395-efca-40d7-8c95-dc05eb47cf35)
 
-Section 9: Errors
+### Section 9: Errors
+
 The following errors are possible:
+
 a.	Context error: incomplete coverage of the mapping of current cancerous area and incorrect mapping of the organ for the particular patient. 
+
 b.	Context error: prediction of a cancerous region can be completely wrong or partially wrong for the particular patient.
+
 c.	Context error: if one follow-up visits image is unavailable, but others are available, then user may not use the system, even though the system can work just fine with its prediction with the missing image, for the particular patient.
+
 d.	Fail State error: insufficient training data for the particular case at hand. Hence, low confidence recommendation produced.
+
 e.	Background errors: system produces an incorrect output and the user, due to lack of time or poor judgment, is unable to discern the incorrect output.
+
 f.	Input errors: unexpected input: different formats of patient records. Some missing data points.  User will think system will auto-correct or fill-in the gaps when it provides its output.
+
+# Product Requirements Document (PRD) & Product Strategy
+
+## Cancer Clinical Decision Support (CDS) tool Use Case- Product Vision
+
+Goal is to be the first in the industry to develop an AI-powered cancer diagnosis and prognosis tool across at least five cancer types with a unique curated dataset that is accurate, explainable, trustworthy, fair, and reliable. This tool will be used by providers in all parts of the world, with a particular focus on underserved communities. It will improve patient outcomes, reduce healthcare costs, and empower patients to take control of their health. We will achieve this by building a sustainable business model that ensures that everyone has access to this life-saving technology.
+
+## Problem Statement
+Currently, there is no cancer prognosis tool in the market. AI models are best suited to address this problem. Physicians have to perform painful and costly tissue biopsy studies to determine if cancer has spread to parts of the body.  Physicians are involved only when cancer has reached stage I/II/III/IV, there is no way for physicians to assign a likelihood to patients that cancer will happen based on their symptoms. Also, insurance companies are burdened with unexpected high cost when a patient is diagnosed.  Further, patients don’t have a way to continuously monitor whether the daily symptoms they are experiencing it means that cancer has relapsed, thus, they are in everyday stress thinking about it which affects their mental well-being and quality of life.  
+
+## Objectives
+
+  1.	Integrate the tool into the workflow of at least 35% of Providers in the US. These are all paying customers. The tool is being used to generate accurate and timely prognoses and diagnoses for at least 50% of patients monthly by these customers.
+     
+  2.	Integrate the tool into the workflow of at least 30% of Providers of Canada, UK, Germany, Italy, and France.  These are all paying customers.  The tool is being used to generate accurate and timely prognoses and diagnoses for at least 50% of patients monthly by these customers.
+     
+  3.	Adoption of a cancer wellness app by at least 60% of patients who are diagnosed to be cancer-free, which will help them to maintain their health and reduce the risk of recurrence.
+     
+  4.	Adoption of the CDS tool by at least 25% of health insurance companies in the US.  These are paying customers.
+     
+  5.	Integrate the tool into the workflow of 10% of Providers in five developing countries and under-developed countries with a particular focus on countries with high rates of cancer incidence. The tool is being actively used on at least 60% of patients monthly by these customers.
+
+## Impact
+
+This tool can fast-track diagnosis by 30%, especially in developing countries. Also, it can reduce wasteful spending of unnecessary diagnosis and lab tests in majority of cases, enabling millions of dollars in savings. Lastly, it gives cancer diagnosis abilities to medical professionals in remote parts of developing/under-developed countries, where the alternate is to not get treated at all.
+
+## Constraints 
+
+•	The large sample size of 100,000 to 1,000,000+ of patients in selected countries with different cancer types and multimodal data of: genetics, CT/MR imaging at different times of their follow-up visit, lab tests and symptoms of a cancer-free patient, possibly does not exist.  Hence, quite expensive and time-consuming prospective studies will need to be initiated.
+
+•	These multimodal data for each patient is 300MB+, thus, state-of-the art multiple expensive NVIDIA H100 GPUs will be needed, possibly along with Google or AWS cloud cost.
+
+•	This will be first-of-its-kind AI model, most likely developed from scratch, hence validating its output will take several alpha customer sites and several months of revising the model. Training the model will also take several months of trial and error. Explainability of the model is a key aspect, and extensive research will be needed to provide this ability that meets user expectation. It will take several months to get the model FDA approved too.
+
+•	It is unclear whether anybody will pay for this tool and if so, how much is their willingness-to-pay.
+
+•	The use of AI Clinical Decision Support technology is new; thus, their will have to a change in user personas and customer mindset to convince them to adopt this technology.
+
+## Personas
+
+•	Medical Oncologist & Radiologist at Providers in Developed and Developing countries
+
+•	General Physicians & Nurse Practicians in Developing and Under-developed countries
+
+•	Healthcare Insurance Agents in the US
+
+## Market Insights
+
+According to Markets and Markets report, the AI in Healthcare Market is projected for big growth from USD 14.6 Billion in 2023 to USD 102.7 Billion by 2028, at an impressive CAGR of 47%.
+
+Also, an aging population living longer means that there will be more people getting cancer in their lifetime and hence more demand for a Clinical Decision Support tool.  It is estimated that 1 in 2 women and 1 in 3 men in the US will get cancer in their lifetime. (https://www.medicalnewstoday.com/articles/288916)
+
+Further, there is a shortage of skilled medical professionals in developed countries and more so in developing and under-developed countries.  
+
+Lastly, the spread of internet and high adoption of mobile smartphones in developing and under-developed countries means more awareness for people to seek preventive cancer tests, and hence more need for an automated point-of-care Clinical Decision Support tool.
+
+## Business Model Canvas
+![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/df52a7ab-d1bb-43a4-8507-a4bb07e355e8)
+
+## CDS Tool Jobs-to-be-Done
+![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/d3e881b0-7d61-41ac-93c1-df042fb4d80e)
+
+![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/a88bc5eb-b57c-4c8f-8835-0e5c34828be5)
+
+![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/64ce3f15-1236-4bb9-84e7-8cd5c35e270f)
+
+![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/19fc5281-41be-467c-be92-9817915e4d6d)
+
+## Use Cases Scenarios
+
+A Visual Patient journey map is in the appendix.
+
+***Scenario 1***: In the US, a patient who has never had cancer, but has some symptoms visits their general physician, some lab tests are ordered.  Based on the lab results, the CDS tool assists the physician in determining whether patient has cancer or is likely to in the future to develop cancer.  If so, the patient is referred to the medical oncologist, who orders diagnostic imaging and lab tests and Next-Generation Sequencing DNA tests.  After the completion of the imaging, an automated report is generated with the findings to be reviewed by the radiologist.  The oncologist based on all this multi-modal data, uses the CDS tool to determine whether person has cancer and which grade (i.e. TNM) of cancer and if cancer present, then the CDS tool suggest which medication to take and suggests a treatment plan based on latest cancer research and latest treatment guidelines.  The CDS tool offers an explanation for its decision based on knowledge resources from the literature and patient data.  
+
+Note: In a developing country and under-developed country, the above holds true, except there is a lack of access to oncologist. Thus, this CDS tool has even more relevance in these countries, as a general physician or a nurse practician is making cancer treatment decisions based on limited knowledge of treatments and drugs.
+
+***Scenario 2***: A patient has been diagnosed with cancer and receiving chemotherapy.  The insurance company obtains the multimodal data from the patient, in return for additional reimbursements for their therapy and treatment.  The insurance company runs this data into the CDS tool to determine the possibility of future cancer recurrence and accordingly adjust the premiums of the patients.  Thus, not all cancer patients are paying a high insurance premium, but the premium is according to their specific condition.
+
+***Scenario 3***: A patient who has been declared cancer-free, asks the medical professional their chances of cancer relapse or cancer spread. The professional can use the CDS tool to obtain generative images that would show if any chances of cancer relapse or spread. This is then communicated to the patient. 
+
+***Scenario 4***: A patient has been cancer-free, but needs to do follow-up visits every 9 months with their medical professional.  The lab test, imaging data from these follow-up visits is fed into the CDS tool to determine the future trajectory of cancer.  Also, the patient has a wellness app, so they can weekly monitor their symptoms, if any.  Based on the entire medical history and these weekly data points, the CDS tool will inform the patient if they should talk to their doctor about these symptoms. Thus, the intervention is at the right-time, versus waiting for the next 6-to-9-month visit.
+
+## Features In
+
+[M] denotes minimum viable product features.
+
+### Section 1: Data Input Features
+
+1.1	[M] A medical professional in the Provider setting should be able to manually upload patient data from past, current and follow-up visits. Specifically, MRI/CT/X-rays imaging exams, genetic tests PDF reports, lab tests reports, doctor’s notes, radiologist PDF reports, pathology PDF reports, drugs, and demographics. 
+
+1.2	In the Provider setting, the CDS tool should be integrated with the EMR (Electronic Medical Record), so that all the patient data is automatically imported into the CDS tool. If the automatic upload of data fails, then provide an option to manually upload the patient data.
+
+1.3	The CDS tool should be integrated with the radiologist workflow in the PACS (Picture Archiving Communication Systems), LIS (Lab Information System), RIS (Radiology Imaging Suite) and the oncologist workflow in the EMR and OIS (Oncology Information System).
+
+### Section 2: Data Handling Features
+
+2.1	[M] Patient data should stay with the Provider control, either on cloud or on-premise. 
+
+2.2	[M] Only AI model feedback data from the free-field text box, survey, thumbs up/down will be sent back to the company once a day.
+
+### Section 3: Error Reporting Features
+
+3.1 [M] In response to possible Context errors and Fail state errors, user shall have the ability to provide input via free-field text box, survey, thumbs up/down.
+
+### Section 4: Model Output Features
+
+4.1 [M] For each patient, the user will have the option to enable or disable whether they want the CDS tool to produce an output for the patient. 
+
+4.2 [M] For each patient, the user will have the option whether they want to save the entire model output or part of the model output or not save at all.
+
+4.3[M] Once a diagnostic image is acquired, an automated radiology report will be produced, which will be available for review only to the radiologist
+
+4.4[M] Once a diagnostic image is acquired, if cancer is present, then automatic segmentation of the existing cancerous region will be shown for the review of radiologist
+
+4.5 [M] For current patient visit, for a patient with confirmed cancer diagnosis, a textual output of whether person has continued presence of cancer will be shown.
+
+4.6 For current patient visit, if a person has not yet been diagnosed with cancer, based on the symptoms presented a textual indication of whether person has cancer will be shown for review by the medical professional. 
+
+4.7 For current patient visit, a patient who has been confirmed diagnosed with cancer, an image will be produced that shows the future trajectory of cancer
+
+4.8 For current patient visit, a patient who has been declared cancer-free by medical professional, the likelihood of cancer re-appearing will be shown for review by medical professional. 
+
+4.9 For current patient visit, a patient who has been confirmed diagnosed with cancer, an automated treatment plan with which drugs to be prescribed will be produced for review by medical professional.
+
+4.10 For a patient, who has been diagnosed with cancer and who has been declared to be free of cancer, the CDS tool will produce a risk score for their relapse of cancer, and patient will have the option to automatically transfer this information and model to insurance companies. 
+
+### Section 5: Explainability Features
+
+5.1 [M] The model will produce three outputs for each of the above use cases and each will have the categorical label – high AI confidence, medium AI confidence, low AI confidence. Except, for the case where there is a decision on whether person has cancer or not – a single output will be produced with the above mentioned categorial labels.
+
+5.2 [M] For each output, their will be an explanation of which data points in the patient history were used to arrive at the conclusion, for the medical professionals.  
+
+5.3 [M] There will be a general description of how the model works. Also, their will be an example video of end-to-end how the model input and output works.
+
+5.4 There will be a counterfactual way of explaining the output of the model. This involves explaining why the AI made a particular decision by showing how the decision would have changed if one or more input features had been different.
+
+5.5 For each model output, the appropriate knowledge resources and guidelines will be mentioned as the source of reference on which the model output is based.
+
+### Section 6: Wellness App Patient-Facing Features
+
+6.1	[M] Patient Login credentials provided based on prescription by Physician and two-factor authentication to protect patient data.
+
+6.2	[M] Patient provides consent to allow their entire medical history into the app, so recommendations are tailored to their medical condition at that time.
+
+6.3	[M] Symptom tracking for Patient: The app should allow patients to track their cancer symptoms on a weekly basis. This could include symptoms such as pain, fatigue, nausea, vomiting, and diarrhea.
+
+6.4	[M] Trend analysis: The app should be able to analyze the patient's symptom data over time to identify any concerning trends and show last 6 months window symptoms to patient, whereas, for the Physician the entire history of symptom tracking should be shown. For example, if the patient's pain is increasing or their fatigue is worsening.
+
+6.5	[M] Physician notification: If the app detects a concerning trend, it should automatically notify the physician who prescribed the app. 
+
+6.6	[M] Patient notification: The app should also notify the patient if it detects a concerning trend. This will encourage the patient to contact their physician as soon as possible.
+
+6.7	Education: The app should provide patients with educational resources about cancer and its symptoms. This could include information about different types of cancer, how to manage symptoms, and how to stay healthy.
+
+6.8	Support: The app should provide patients with a way to connect with other cancer patients and survivors. This could be done through a forum, chat room, or social media group.
+
+6.9	Personalization: The app should be personalized to the individual patient's needs. This could include allowing the patient to customize the symptom tracking features, the educational resources, and the support options. 
+
+6.10	Reminders:  If the patient has not logged on the app for two consecutive weeks, then send the text message or email reminder, based on patient preference. Similarly, if the Physician has not acknowledged the alert, then send them another alert 3 days later, for a total of maximum five alerts.
+
+### Features Out
+
+7.1	For the under-developed countries, with the nurse practician as the user persona, only one model output will be provided with minimal to no explanation, as they don’t have the expertise to understand it. 
+
+7.2	No patient facing wellness app and insurance companies’ software features for the developing and under-developed countries.
+
+7.3	Model output confidence accuracy in terms of percentage will not be shown.
+
+7.4	Example-based justification will not be provided as it exposes the patient confidential training dataset used.  Even though it is an anonymized patient it would cause confusion for the user as after reviewing the suggested training dataset, they could conclude that their case at hand is quite dissimilar and hence will quickly mistrust the AI model. 
+
+## Features Prioritization
+
+![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/7efb89d4-0134-4594-b784-11a2027d4796)
+
+## AI Model Metrics
+
+•	The AI model shall have a Explainability score of at least 80% as measured by the user satisfaction expert review surveys. The System Causality scale of 1 to 10 will be used.  The LIME (Local Interpretable Model-Agnostic Explanations) and SHAP (Shapely Additive Explanations) methods of measuring Explainability will also be explore. 
+
+•	The AI model shall have a trustworthiness score of at least 90% as measured by auditing by expert reviewers’ survey.
+
+•	The AI model shall have a fairness score of at least 90% as measured by auditing by expert reviewers’ survey.  The methods of Disparate Impact, Equalized odds, and Counterfactual fairness will also be explored.  Disparate impact measures whether AI models affects disproportionately certain groups of people. Equalized Odds measures whether AI product has the same accuracy for all groups of people. Counterfactual fairness measures whether AI product would make the same decision for two people with similar characteristics, except for one protected characteristic. 
+
+•	The AI model shall have a recall accuracy of at least 80%
+
+## Technical Considerations
+
+•	Unsupervised algorithms will be utilized. 
+
+•	This use case requires generative AI techniques.
+
+•	Initially, preference will be given to a simpler AI model with the trade-off of lower accuracy compared to a complex model.  This is to build trust with the users with better explanations of the output of the simpler AI model. 
+
+## Go-To-Market (5-year horizon)
+
+Customers will be developed in the following phases:
+
+Phase A: Select Large Integrated Delivery Network (IDN) Providers in the US.  The model will be validated in each of these sites individually before full paid roll-out. Third party partnerships in-place for CDS tool integration. 
+
+Phase B: Select Providers in Canada and Europe, in order of priority, UK, Germany, Italy, and France. The model will be validated in each of these sites individually before full paid roll-out.
+
+Phase C: Once the model matures, full paid roll-out in US and Europe customers. 
+
+Phase D: Wellness app for select patients to validate model. Select insurance companies in the US for model validation.
+
+Phase E: Once the model matures, full paid roll-out for insurance companies in US. Free full roll-out for patients facing wellness app.
+
+Phase F: Select large providers in five developing countries. Once the model matures, full paid roll-out in five developing countries.
+
+## Pricing:
+
+US and Europe Providers pay $25,000 base fee per year + $200 per patient on which CDS tool used.
+
+Insurance companies pay $50,000 base fee per year + $100 per patient on which CDS tool used.
+
+Patient facing wellness app will be free of cost as the information collected from this app will help insurance companies on an ongoing basis determine insurance premium. So, indirectly this app is being funded by insurance companies.
+
+## Approaches: Tasks
+
+Based on the Go-To-Market Phases, the development features and model development will be prioritized.  
+
+### Action plan for objective# 1: “Integrate the tool into the workflow of at least 35% of Providers in the US.”
+
+  Key Result #1.1: Desired data is procured for at least 500 diverse US patients and data pre-processing is complete.
+  
+  Key Result #1.2: The steps of feature engineering, model selection, model training and evaluation are complete.
+  
+  Key Result #1.3: Model development steps are re-performed for a 10,000-patient dataset.  Begin to develop customer relationships with Providers demoing the capability of the model from the 500 patient’s dataset.
+  
+  Key Result #1.4: The Minimum Viable Product [M] Features outlined above are complete.
+  
+  Key Result #1.5: Deploy model for evaluation at five Provider sites in the US. Begin the develop the Return-on-investment business case alongside the customer which would include understanding their willingness to pay. Develop almost all remaining features mentioned above.
+  
+  Key Result #1.6: Iterate on model improvements and feature enhancements based on customer feedback.
+  
+  Key Result #1.7: FDA (Food and Drug Administration) approval of the CDS tool. Model deployed at 5% of paying customer sites in US.
+  
+  Key Result #1.8: Model deployed at 10% of paying customer sites in US.
+  
+  Key Result #1.9: Model deployed at 20% of paying customer sites in US.
+  
+  Key Result #1.10: Model deployed at 35% of paying customer sites in US. At all sites it is used on at least 50% of the patients monthly.
+  
+  Key Result #1.11: Continuous model improvement in-house and subsequent revised deployment at customer sites.
+
+### Action plan for objective# 2: “Integrate the tool into the workflow of at least 30% of Providers of Canada, UK, Germany, Italy, and France.”
+
+  Key Result #2.1: Desired data is procured for at least 500 diverse patients from these countries and data pre-processing is complete.
+  
+  Key Result #2.2: Augment the US model with these new data points and perform the steps of feature engineering, model selection, model training and evaluation.
+  
+  Key Result #2.3: Use the US CDS tool features as a starting point and deploy at five sites in these European countries for model evaluation.
+  
+  Key Result #2.4: Iterate on model improvements and feature enhancements based on customer feedback.
+  
+  Key Result #2.5: EU CE-mark and TUV approval of the CDS tool. Model deployed at 5% of paying customer sites in US.
+  
+  Key Result #2.6: Model deployed at 10% of paying customer sites.
+  
+  Key Result #2.7: Model deployed at 20% of paying customer sites.
+  
+  Key Result #2.8: Model deployed at 35% of paying customer sites. At all sites it is used on at least 50% of the patients monthly.
+  
+  Key Result #2.9: Continuous model improvement in-house and subsequent revised deployment at customer sites.
+
+### Action plan for objective# 3: “Adoption of a cancer wellness app by at least 60% of patients”
+
+Key Result #3.1: Create the MVP features for Android and iOS mobile app and desktop.
+
+Key Result #3.2: Test the UX of app on 100 patients and 20 Physicians.  Make changes to app based on feedback.
+
+Key Result #3.3: Finalize the app and make it commercially available.
+
+Key Result #3.4: Complete the rest of the features, test the app on similar sample size and make it commercially available.
+
+Key Result #3.5: app maintenance and continuous improvement based on patient and physician feedback.
+
+### Action plan for objective# 4: “Adoption of the CDS tool by at least 25% of US insurance companies”
+
+Key Result #4.1: Develop Model Features for insurance companies.
+
+ Key Result #4.2: Test features alongside three insurance companies.
+ 
+Key Result #4.3: Tool adopted by 5% of insurance companies
+
+Key Result #4.4: Tool adopted by 10% of insurance companies.  Continuous improvement to the model.
+
+Key Result #4.5: Tool adopted by 25% of insurance companies. Continuous improvement to the model.
+
+### Action plan for objective# 5: “Integrate the tool into the workflow of 10% of Providers in five developing countries and under-developed countries”
+
+Key Result #5.1: Desired data is procured for at least 500 diverse patients from these countries and data pre-processing is complete.
+
+Key Result #5.2: Augment the US and Europe model with these new data points and perform the steps of feature engineering, model selection, model training and evaluation.
+
+Key Result #5.3: Use the US and Europe CDS tool features as a starting point and deploy at five sites for model evaluation.
+
+Key Result #5.4: Iterate on model improvements and feature enhancements based on customer feedback.
+
+Key Result #5.5: Local regulatory agency approval of the CDS tool. Model deployed at 2% of paying customer sites in US.
+
+Key Result #5.6: Model deployed at 10% of paying customer sites.
+
+## Design & Commercialization Roadmap
+![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/87c3a96e-60f6-4fb9-bd1f-3c8be46efd8d)
+
