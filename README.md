@@ -77,16 +77,14 @@ Input to model is a white race patient cancer medical image (before new drug int
 
 ### D)	Use case: Synthetic images. 
 Input to model is one medical image and output of model is multiple augmented images that represent real patient scenarios.
+
 ***Job-to-be-done***: to effectively train AI models hundreds and thousands of medical images representing diverse set of patient disease characteristics are necessary. 
 
 ***Problem statement***: it has been challenging to confirm whether a generative model represents the real-life situation of an actual patient.  More diverse data sets fed as input to model, will produce output that represents actual patient disease characteristics.
 
 ***Impact***: if we are able to show that generative model images output represents real-life patient scenarios, then there would be mass adoption globally of these AI models.
 
-#### E)	Use cases: 
-##### a.	Use case#1: Automated treatment plans- Clinical Decision Support: 
-Input to model is any available medical images, genetic testing results, patient history, lab results. Output is a recommendation on the treatment plan for the oncologist. 
-##### b.	Use case#2: Optimize Number of Imaging and Diagnostic Test – Clinical Decision Support: 
+#### E)	Use cases: Optimize Number of Imaging and Diagnostic Test – Clinical Decision Support: 
 Input to model is any available medical images, genetic testing results, patient history, lab results. Output is a recommendation on next set of lab results or imaging tests to prescribe.
 
 ***Job-to-be-done***: supplements knowledge of entry-level physician or oncologist who may not have the many years’ experience or knowledge of constantly changing cancer guidelines. The automated plan output increases confidence of treating oncologist.
@@ -121,3 +119,50 @@ Input to model is genetic characteristics of a particular race or people from a 
 ***Problem statement***: there is a lack of literature and clinical trials and understanding of cancer pathways in patients of under-developed countries. 
 
 ***Impact***: Billions of people in developing and under-developed countries can benefit from the advance knowledge of treatment plans in developed countries. 
+
+# Literature survey
+Please see the literature_survey.xls file or appendix.
+
+# Open-source datasets
+Here are the open source datasets or websites that host a library of cancer datasets that I came across:
+  a)	Chest x-rays:
+    a.	CheExpert dataset (Stanford AIMI - https://stanfordmlgroup.github.io/competitions/chexpert/)
+    b.	https://physionet.org/
+    c.	MIMIC CXR dataset (https://www.citiprogram.org/members/index.cfm?pageID=122&intStageID=106240#view)
+  b)	MR:
+    a.	BraTS dataset (https://ipp.cbica.upenn.edu/)
+    b.	CT & MR dataset for 15 organs (https://amos22.grand-challenge.org/Instructions/)
+  c)	CT
+    a.	Liver tumor segmentation (https://competitions.codalab.org/competitions/17094#learn_the_details)
+  d)	Websites that host library of many datasets:
+    a.	https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=61080890
+
+# Journal Paper Explored & Sample size
+The codebase and methodology presented in the following paper was used: MedSegDiff-V2: Diffusion based Medical Image Segmentation with Transformer. This paper show State of the Art (SOA) performance for the AMOS2022 dataset of 200 multi-contrast CT images.  
+
+***It was encouraging to see a code that was able to generate SOA performance with meager 200 images.  Thus, to further validate the performance of the model on different datasets, I trained the model on the dataset described in the - The Liver Tumor Segmentation Benchmark (LiTS) journal article, which is an open-source dataset of 110 3D CT images.***
+
+# MedSegDiff Code modifications
+The code from, https://github.com/WuJunde/MedSegDiff, was modified to fit the requirements of LiTS dataset and some other considerations as follows:
+  a)	Since, a single GeForce RTX 4090 was available for training, the parallel training code was commented-out in the file – train_util.py.
+  b)	Since, windows desktop was used, the gloo backend option was inserted in the file – dist_util.py.
+  c)	The parser in bratslaoader.py 3D data section of the code was updated to match the format of the input data folders name.
+  d)	The actual code is for one 3D MR image which when converted are 155 2D DICOM images.  However, the one 3D CT image of the LiTS dataset has 123 2D image. Thus, all the lines in bratsloader.py that dealt with 155 numeric calculations were changed to 123.
+  e)	The initial code for each patient they had four MRI series – T1; T1Flair; T2; post-contrast T1 weighted. Hence, the number of channels in bratsloader.py were set at five in original code.  In my case for the LiTs dataset there is only one CT image per patient, hence number of channels was set at two.
+  f)	The initial code has hard-coded the flag in the bratsloader.py data file between if command which has two files in training code and one file (as there is no segmentation file) in testing code.
+
+# Results
+The model was trained with 110 3D CT images of the LiTS dataset. It was trained for 100,000 steps using the following hyperparameters after pytorch environment activation:
+  •	conda activate pytorch-gpu2-python-3-10
+  •	python scripts/segmentation_train.py --data_dir data/training --image_size 256 --num_channels 128 --class_cond False --num_res_blocks 2 --num_heads 1 --learn_sigma True --use_scale_shift_norm False --attention_resolutions 16 --diffusion_steps 1000 --noise_schedule linear --rescale_learned_sigmas False --rescale_timesteps False --lr 1e-4 --batch_size 8
+  •	python scripts/segmentation_sample.py --data_dir /data/testing --model_path results/savedmodel100000.pt --image_size 256 --num_channels 128 --class_cond False --num_res_blocks 2 --num_heads 1 --learn_sigma True --use_scale_shift_norm False --attention_resolutions 16 --diffusion_steps 50 --noise_schedule linear --rescale_learned_sigmas False --rescale_timesteps False --num_ensemble 5  --dpm_solver True
+
+In the testing command, changes were made to hyperparameters of diffusion steps by changing it from 50 to 10,000. Further in a different scenario, the number of ensembles were changed from 5 to 20.  However, no difference was observed in the output.
+
+Below is an example of patient#16 3D CT image of the three views – A/P; S/I and R/L directions (Fig 1) and the liver segmented mask (Fig 2). Lastly, there is the model output segmentation mask (Fig 3).
+
+Even though the original code was tested on 3D MR images, it also works for 3D CT images.
+
+Fig 1: Patient#16: Training 3D CT image
+
+
