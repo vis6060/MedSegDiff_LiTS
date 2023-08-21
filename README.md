@@ -417,6 +417,10 @@ Currently, there is no cancer prognosis tool in the market. AI models are best s
 
 Goal is to be the first in the industry to develop an AI-powered cancer diagnosis and prognosis tool across at least five cancer types with a unique curated dataset that is accurate, explainable, trustworthy, fair, and reliable. This tool will be used by providers in all parts of the world, with a particular focus on underserved communities. It will improve patient outcomes, reduce healthcare costs, and empower patients to take control of their health. We will achieve this by building a sustainable business model that ensures that everyone has access to this life-saving technology.
 
+## Mantra
+
+“Become the first team to successfully commercialize a cancer prognosis AI clinical decision support tool globally.”
+
 ## Objectives
 
   1.	Integrate the tool into the workflow of at least 35% of Providers in the US. These are all paying customers. The tool is being used to generate accurate and timely prognoses and diagnoses for at least 50% of patients monthly by these customers.
