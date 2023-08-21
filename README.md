@@ -322,9 +322,9 @@ These metrics will change after 10,000 patients have been processed and the mode
 
   a)	Oncologist in developed countries
   
-    -	Primary goal: Serve a large workload of cancer patients and stay up to date on latest cancer drugs and treatment pathways.
+    Primary goal: Serve a large workload of cancer patients and stay up to date on latest cancer drugs and treatment pathways.
     
-    -	Step-by-step process that users currently use to accomplish the task that AI will accomplish: Currently, there is no tool that will alert the oncologist whether cancer has spread to parts of body for the various ethnicities and genetics.
+    Step-by-step process that users currently use to accomplish the task that AI will accomplish: Currently, there is no tool that will alert the oncologist whether cancer has spread to parts of body for the various ethnicities and genetics.
     
         -	They manually review the entire medical history of patient, including numerous pages of radiologist notes and past treatment history. 
 
