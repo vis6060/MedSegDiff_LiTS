@@ -413,9 +413,13 @@ f.	Input errors: unexpected input: different formats of patient records. Some mi
 ## Problem Statement
 Currently, there is no cancer prognosis tool in the market. AI models are best suited to address this problem. Physicians have to perform painful and costly tissue biopsy studies to determine if cancer has spread to parts of the body.  Physicians are involved only when cancer has reached stage I/II/III/IV, there is no way for physicians to assign a likelihood to patients that cancer will happen based on their symptoms. Also, insurance companies are burdened with unexpected high cost when a patient is diagnosed.  Further, patients don’t have a way to continuously monitor whether the daily symptoms they are experiencing it means that cancer has relapsed, thus, they are in everyday stress thinking about it which affects their mental well-being and quality of life.  
 
-## Cancer Clinical Decision Support (CDS) tool Use Case- Product Vision
+## Cancer Clinical Decision Support (CDS) tool- Product Vision
 
-Goal is to be the first in the industry to develop an AI-powered cancer diagnosis and prognosis tool across at least five cancer types with a unique curated dataset that is accurate, explainable, trustworthy, fair, and reliable. This tool will be used by providers in all parts of the world, with a particular focus on underserved communities. It will improve patient outcomes, reduce healthcare costs, and empower patients to take control of their health. We will achieve this by building a sustainable business model that ensures that everyone has access to this life-saving technology.
+Be the first in the industry to develop an AI-powered cancer diagnosis and prognosis tool with a global adoption.
+
+## Cancer Clinical Decision Support (CDS) tool- Product Goal
+
+Goal is to be develop a tool for at least five cancer types with a unique curated dataset, that is accurate, explainable, trustworthy, fair, and reliable. This tool will be used by providers in all parts of the world, with a particular focus on underserved communities. It will improve patient outcomes, reduce healthcare costs, and empower patients to take control of their health. We will achieve this by building a sustainable business model that ensures that everyone has access to this life-saving technology.
 
 ## Mantra
 
