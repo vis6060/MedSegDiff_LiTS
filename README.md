@@ -619,6 +619,8 @@ Customers will be developed in the following phases:
 
 ***Phase F***: Select large providers in five developing countries. Once the model matures, full paid roll-out in five developing countries.
 
+There will be an element of awarness and education that will need to be provided to medical professionals and patients, especially around AI mental models.  This user mindshift needs to be cultivated early-on prior to the commericlization stage.
+
 ## Pricing
 
 US and Europe Providers pay $25,000 base fee per year + $200 per patient on which CDS tool used.
