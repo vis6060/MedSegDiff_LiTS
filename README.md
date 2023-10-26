@@ -1,5 +1,7 @@
 # Author: Vishal Kampani
 
+# 2-minute Youtube Video - Transforming Healthcare with Generative AI: The Global Cancer Diagnosis Revolution.  (https://youtu.be/sA8b7NOvy7A)
+
 ![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/4ab4c14c-1400-4a44-91e5-14ef2295d108)
 ![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/19532b56-9c50-47cb-9cce-9ef5c0b1f678)
 ![image](https://github.com/vis6060/MedSegDiff_LiTS/assets/75966773/9af33d36-6a84-4c36-9419-d75da266c7c7)
